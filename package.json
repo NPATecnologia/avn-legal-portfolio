@@ -1,0 +1,18 @@
+{
+  "name": "avn-legal-portfolio",
+  "version": "1.0.0",
+  "description": "Site portfólio premium para escritório de advocacia empresarial fictício.",
+  "main": "index.html",
+  "scripts": {
+    "generate:media": "node scripts/generate-media.mjs",
+    "test": "echo \"Static site: abrir no navegador ou servir pelo WAMP\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^1.49.0",
+    "sharp": "^0.34.5"
+  }
+}
