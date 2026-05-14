@@ -109,6 +109,7 @@ textarea:focus-visible {
   z-index: 20;
 }
 
+/* Header — mobile-first sticky with drawer nav */
 .site-header {
   position: sticky;
   top: 0;
@@ -122,8 +123,12 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 78px;
-  gap: 18px;
+  min-height: 68px;
+  gap: 14px;
+}
+
+@media (min-width: 1024px) {
+  .header-inner { min-height: 78px; gap: 18px; }
 }
 
 .brand {
@@ -136,9 +141,13 @@ textarea:focus-visible {
 }
 
 .brand-mark-image {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   flex: 0 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .brand-mark-image { width: 38px; height: 38px; }
 }
 
 .brand-copy {
@@ -150,9 +159,9 @@ textarea:focus-visible {
 .brand-copy strong {
   display: block;
   color: var(--ivory);
-  font-size: 0.66rem;
+  font-size: 0.58rem;
   line-height: 1.1;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -160,28 +169,70 @@ textarea:focus-visible {
 .brand-copy small {
   display: block;
   color: var(--gold);
-  font-size: 0.56rem;
-  letter-spacing: 0.16em;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
+@media (min-width: 1024px) {
+  .brand-copy strong { font-size: 0.66rem; letter-spacing: 0.14em; }
+  .brand-copy small { font-size: 0.56rem; letter-spacing: 0.16em; }
+}
+
+/* Nav — drawer overlay on mobile, inline horizontal at lg */
 .site-nav {
-  display: flex;
-  align-items: center;
-  gap: 18px;
+  position: fixed;
+  inset: 64px 14px auto;
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(12, 11, 10, 0.96);
+  border: 1px solid rgba(215, 183, 124, 0.12);
+  transform: translateY(-18px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.site-nav.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .site-nav a {
   color: var(--text-soft);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  padding: 10px 2px;
   transition: color 160ms ease;
 }
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] { color: var(--ivory); }
 
+@media (min-width: 1024px) {
+  .site-nav {
+    position: static;
+    inset: auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .site-nav a { font-size: 0.9rem; padding: 0; }
+}
+
+/* Menu toggle — visible on mobile, hidden at lg */
 .menu-toggle {
-  display: none;
+  display: inline-flex;
   width: 48px;
   height: 48px;
   padding: 0;
@@ -193,12 +244,17 @@ textarea:focus-visible {
   justify-content: center;
   flex-direction: column;
   gap: 4px;
+  cursor: pointer;
 }
 
 .menu-toggle span:not(.sr-only) {
   width: 18px;
   height: 1.5px;
   background: currentColor;
+}
+
+@media (min-width: 1024px) {
+  .menu-toggle { display: none; }
 }
 
 /* Buttons — mobile touch target ≥48px, desktop ≥52px */
@@ -712,33 +768,6 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 }
 
 @media (max-width: 840px) {
-  .menu-toggle { display: inline-flex; }
-  .brand-mark-image { width: 30px; height: 30px; }
-  .brand-copy strong {
-    font-size: 0.52rem;
-    letter-spacing: 0.1em;
-  }
-  .brand-copy small {
-    display: none;
-  }
-
-  .site-nav {
-    position: fixed;
-    inset: 74px 14px auto;
-    display: grid;
-    gap: 10px;
-    padding: 18px;
-    border-radius: 24px;
-    background: rgba(12, 11, 10, 0.96);
-    border: 1px solid rgba(215, 183, 124, 0.12);
-    transform: translateY(-18px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 180ms ease, transform 180ms ease;
-  }
-
-  .site-nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .site-nav a { padding: 10px 2px; }
   .hero { padding-top: 28px; }
   .hero-copy { max-width: none; }
   .hero-media { min-height: 320px; border-radius: 24px; }
