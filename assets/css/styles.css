@@ -284,9 +284,14 @@ textarea:focus-visible {
 .button-small { min-height: 44px; padding-inline: 18px; }
 .button-ghost { background: rgba(255, 247, 234, 0.03); }
 
+/* Hero — mobile-first stack, side-by-side at lg */
 .hero {
   position: relative;
-  padding: 52px 0 22px;
+  padding: 32px 0 18px;
+}
+
+@media (min-width: 1024px) {
+  .hero { padding: 52px 0 22px; }
 }
 
 .hero::after {
@@ -304,9 +309,13 @@ textarea:focus-visible {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+  grid-template-columns: 1fr;
   gap: 28px;
   align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr); }
 }
 
 .hero-copy { max-width: 640px; }
@@ -366,9 +375,13 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-top: 28px;
+}
+
+@media (min-width: 560px) {
+  .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .hero-stat,
@@ -401,12 +414,25 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 .hero-media {
   position: relative;
   overflow: hidden;
-  min-height: 540px;
-  max-width: 470px;
-  margin-left: auto;
-  border-radius: 30px;
+  min-height: 360px;
+  max-width: none;
+  margin-left: 0;
+  border-radius: 24px;
   border: 1px solid rgba(215, 183, 124, 0.16);
   box-shadow: 0 36px 90px rgba(0, 0, 0, 0.44);
+}
+
+@media (min-width: 720px) {
+  .hero-media { min-height: 460px; border-radius: 28px; }
+}
+
+@media (min-width: 1024px) {
+  .hero-media {
+    min-height: 540px;
+    max-width: 470px;
+    margin-left: auto;
+    border-radius: 30px;
+  }
 }
 
 .hero-video,
@@ -437,16 +463,26 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 
 .hero-overlay-card {
   position: absolute;
-  right: 24px;
-  bottom: 24px;
+  right: 14px;
+  bottom: 14px;
   z-index: 1;
-  max-width: 240px;
-  padding: 16px 18px;
-  background: rgba(15, 13, 11, 0.68);
+  max-width: 210px;
+  padding: 14px 16px;
+  background: rgba(15, 13, 11, 0.78);
   border: 1px solid rgba(215, 183, 124, 0.18);
-  border-radius: 18px;
+  border-radius: 16px;
   backdrop-filter: blur(10px);
   pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .hero-overlay-card {
+    right: 24px;
+    bottom: 24px;
+    max-width: 240px;
+    padding: 16px 18px;
+    border-radius: 18px;
+  }
 }
 
 .hero-overlay-card span {
@@ -458,8 +494,13 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   margin-bottom: 8px;
 }
 
-.inner-hero-card { display: grid; gap: 14px; padding: 20px; }
-.inner-hero-card img { width: 100%; min-height: 360px; object-fit: cover; border-radius: 20px; }
+.inner-hero-card { display: grid; gap: 14px; padding: 18px; }
+.inner-hero-card img { width: 100%; min-height: 260px; object-fit: cover; border-radius: 18px; }
+
+@media (min-width: 720px) {
+  .inner-hero-card { padding: 20px; }
+  .inner-hero-card img { min-height: 360px; border-radius: 20px; }
+}
 
 .section { position: relative; padding: 34px 0; }
 .section-tight { padding-top: 18px; }
@@ -748,7 +789,6 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 }
 
 @media (max-width: 1040px) {
-  .hero-grid,
   .split-panel,
   .story-grid,
   .editorial-grid,
@@ -761,19 +801,10 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   .team-grid,
   .result-grid { grid-template-columns: 1fr; }
 
-  .hero-media { min-height: 460px; }
-  .hero-stats { grid-template-columns: 1fr; }
   .cta-band { flex-direction: column; align-items: flex-start; }
-  .hero-media { max-width: none; margin-left: 0; }
 }
 
 @media (max-width: 840px) {
-  .hero { padding-top: 28px; }
-  .hero-copy { max-width: none; }
-  .hero-media { min-height: 320px; border-radius: 24px; }
-  .hero-video { display: none; }
-  .hero-media.video-ready .hero-reel img.is-visible { opacity: 0.64; }
-  .hero-overlay-card { display: none; }
   .timeline-item,
   .service-row { grid-template-columns: 1fr; }
   .feature-card,
