@@ -1,4 +1,7 @@
+/* AVN Legal — mobile-first. See DECISION.md for rationale. */
+
 :root {
+  /* Palette — see DECISION.md §2 */
   --bg: #0f0d0b;
   --bg-soft: #171411;
   --panel: rgba(255, 247, 234, 0.06);
@@ -9,7 +12,15 @@
   --ivory: #f6eddc;
   --shadow: 0 30px 60px rgba(0, 0, 0, 0.28);
   --radius: 24px;
-  --container: min(1140px, calc(100vw - 40px));
+  /* Mobile-first container — see DECISION.md §4 */
+  --container: calc(100vw - 32px);
+  --bp-md: 720px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}
+
+@media (min-width: 720px) {
+  :root { --container: min(1140px, calc(100vw - 48px)); }
 }
 
 *,
@@ -48,13 +59,18 @@ textarea:focus-visible {
 
 .container { width: var(--container); margin: 0 auto; }
 
-.site-frame {
-  position: fixed;
-  inset: 18px;
-  border: 1px solid rgba(215, 183, 124, 0.12);
-  pointer-events: none;
-  z-index: 1;
-  border-radius: 28px;
+.site-frame { display: none; }
+
+@media (min-width: 1024px) {
+  .site-frame {
+    display: block;
+    position: fixed;
+    inset: 18px;
+    border: 1px solid rgba(215, 183, 124, 0.12);
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 28px;
+  }
 }
 
 .page-noise {
@@ -185,12 +201,13 @@ textarea:focus-visible {
   background: currentColor;
 }
 
+/* Buttons — mobile touch target ≥48px, desktop ≥52px */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  padding: 0 24px;
+  min-height: 48px;
+  padding: 0 20px;
   border-radius: 999px;
   border: 1px solid rgba(215, 183, 124, 0.24);
   background: linear-gradient(135deg, rgba(215, 183, 124, 0.24), rgba(215, 183, 124, 0.12));
@@ -203,8 +220,12 @@ textarea:focus-visible {
   transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
+@media (min-width: 720px) {
+  .button { min-height: 52px; padding: 0 24px; }
+}
+
 .button:hover { transform: translateY(-2px); border-color: rgba(215, 183, 124, 0.45); background: linear-gradient(135deg, rgba(215, 183, 124, 0.32), rgba(215, 183, 124, 0.16)); }
-.button-small { min-height: 42px; padding-inline: 18px; }
+.button-small { min-height: 44px; padding-inline: 18px; }
 .button-ghost { background: rgba(255, 247, 234, 0.03); }
 
 .hero {
@@ -259,19 +280,31 @@ h1, h2, h3 {
   text-wrap: balance;
 }
 
+/* Mobile-first type scale — see DECISION.md §3 */
 h1 {
-  font-size: clamp(2.95rem, 5.8vw, 5rem);
-  line-height: 0.95;
+  font-size: clamp(2.04rem, 8.4vw, 5rem);
+  line-height: 1.02;
   margin-top: 16px;
-  max-width: 10.5ch;
+  max-width: 12ch;
 }
 
-h2 { font-size: clamp(1.95rem, 3.4vw, 2.95rem); line-height: 1.01; }
-h3 { font-size: clamp(1.28rem, 2vw, 1.72rem); line-height: 1.08; }
+h2 { font-size: clamp(1.8rem, 6vw, 2.95rem); line-height: 1.05; }
+h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
+
+@media (min-width: 1024px) {
+  h1 { line-height: 0.95; max-width: 10.5ch; }
+  h2 { line-height: 1.01; }
+  h3 { line-height: 1.08; }
+}
 
 .lead, .manifesto, .section p, .section li, .section span, .section small { color: var(--text-soft); }
-.lead { font-size: 1.03rem; line-height: 1.72; max-width: 580px; margin: 18px 0 0; }
-.manifesto { max-width: 540px; margin: 12px 0 0; line-height: 1.65; font-size: 0.98rem; }
+.lead { font-size: 1rem; line-height: 1.7; max-width: 580px; margin: 18px 0 0; }
+.manifesto { max-width: 540px; margin: 12px 0 0; line-height: 1.65; font-size: 0.96rem; }
+
+@media (min-width: 1024px) {
+  .lead { font-size: 1.03rem; line-height: 1.72; }
+  .manifesto { font-size: 0.98rem; }
+}
 
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
 
@@ -679,8 +712,6 @@ h3 { font-size: clamp(1.28rem, 2vw, 1.72rem); line-height: 1.08; }
 }
 
 @media (max-width: 840px) {
-  :root { --container: calc(100vw - 28px); }
-  .site-frame { display: none; }
   .menu-toggle { display: inline-flex; }
   .brand-mark-image { width: 30px; height: 30px; }
   .brand-copy strong {
@@ -708,12 +739,6 @@ h3 { font-size: clamp(1.28rem, 2vw, 1.72rem); line-height: 1.08; }
 
   .site-nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
   .site-nav a { padding: 10px 2px; }
-  h1 {
-    font-size: clamp(2.04rem, 8.8vw, 2.7rem);
-    max-width: 9.2ch;
-    line-height: 0.99;
-  }
-  h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
   .hero { padding-top: 28px; }
   .hero-copy { max-width: none; }
   .hero-media { min-height: 320px; border-radius: 24px; }
