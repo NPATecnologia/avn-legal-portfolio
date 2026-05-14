@@ -716,17 +716,23 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 
 .faq-trigger {
   width: 100%;
+  min-height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 22px 24px;
+  gap: 16px;
+  padding: 18px 20px;
   border: 0;
   background: transparent;
   color: var(--ivory);
   text-align: left;
   cursor: pointer;
   touch-action: manipulation;
+  font-size: 0.98rem;
+}
+
+@media (min-width: 720px) {
+  .faq-trigger { gap: 20px; padding: 22px 24px; font-size: 1rem; }
 }
 
 .faq-icon { position: relative; width: 16px; height: 16px; }
@@ -742,7 +748,11 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 }
 .faq-icon::after { transform: rotate(90deg); }
 .faq-trigger[aria-expanded="true"] .faq-icon::after { transform: rotate(0deg); }
-.faq-panel { padding: 0 24px 22px; }
+.faq-panel { padding: 0 20px 18px; }
+
+@media (min-width: 720px) {
+  .faq-panel { padding: 0 24px 22px; }
+}
 
 .cta-band {
   display: flex;
@@ -753,10 +763,14 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 }
 
 .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.contact-list, .footer-links { display: grid; gap: 10px; margin-top: 18px; }
+
+/* Contact list — mobile touch targets */
+.contact-list, .footer-links { display: grid; gap: 12px; margin-top: 18px; }
+.contact-list a { min-height: 32px; display: inline-flex; align-items: center; }
 .office-card { padding: 18px; }
 .office-card strong { color: var(--gold); display: block; margin-bottom: 8px; }
 
+/* Lead form — mobile-first generous input padding */
 .lead-form { display: grid; gap: 14px; margin-top: 18px; }
 .lead-form label { display: grid; gap: 8px; color: var(--ivory); font-size: 0.95rem; }
 
@@ -764,13 +778,28 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 .lead-form select,
 .lead-form textarea {
   width: 100%;
-  border-radius: 16px;
+  min-height: 48px;
+  border-radius: 14px;
   border: 1px solid rgba(215, 183, 124, 0.16);
   background: rgba(7, 6, 5, 0.4);
   color: var(--ivory);
-  padding: 16px 18px;
+  padding: 14px 16px;
   outline: none;
+  font-size: 16px;
 }
+
+@media (min-width: 720px) {
+  .lead-form input,
+  .lead-form select,
+  .lead-form textarea {
+    min-height: 52px;
+    border-radius: 16px;
+    padding: 16px 18px;
+  }
+}
+
+.lead-form textarea { min-height: 120px; resize: vertical; }
+.lead-form button[type="submit"] { margin-top: 4px; }
 
 .lead-form input:focus,
 .lead-form select:focus,
