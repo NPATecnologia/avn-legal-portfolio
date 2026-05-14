@@ -514,15 +514,32 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   max-width: 720px;
 }
 
+/* Grids — mobile-first single column, escalation at breakpoints */
 .feature-grid,
 .cards-grid,
+.practice-grid,
 .metrics-grid,
 .testimonial-grid,
 .team-grid,
 .result-grid,
-.dual-card-grid { display: grid; gap: 18px; }
+.dual-card-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+}
 
-.feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (min-width: 720px) {
+  .practice-grid,
+  .metrics-grid,
+  .testimonial-grid,
+  .team-grid,
+  .result-grid,
+  .dual-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 
 .feature-card,
 .practice-card,
@@ -531,7 +548,18 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 .metric-card,
 .story-card,
 .contact-panel,
-.form-shell { padding: 22px; }
+.form-shell { padding: 18px; }
+
+@media (min-width: 720px) {
+  .feature-card,
+  .practice-card,
+  .glass-card,
+  .result-card,
+  .metric-card,
+  .story-card,
+  .contact-panel,
+  .form-shell { padding: 22px; }
+}
 
 .feature-card p,
 .practice-card p,
@@ -553,11 +581,6 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   letter-spacing: 0.18em;
   margin-bottom: 14px;
 }
-
-.practice-grid,
-.metrics-grid,
-.testimonial-grid,
-.result-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .practice-card ul,
 .story-card ul {
@@ -793,13 +816,7 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   .story-grid,
   .editorial-grid,
   .contact-grid,
-  .footer-grid,
-  .feature-grid,
-  .practice-grid,
-  .metrics-grid,
-  .testimonial-grid,
-  .team-grid,
-  .result-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
 
   .cta-band { flex-direction: column; align-items: flex-start; }
 }
@@ -807,14 +824,6 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 @media (max-width: 840px) {
   .timeline-item,
   .service-row { grid-template-columns: 1fr; }
-  .feature-card,
-  .practice-card,
-  .glass-card,
-  .result-card,
-  .metric-card,
-  .story-card,
-  .contact-panel,
-  .form-shell { padding: 18px; }
   .whatsapp-float {
     right: 14px;
     bottom: 14px;
