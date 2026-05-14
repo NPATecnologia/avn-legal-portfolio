@@ -590,25 +590,39 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   gap: 10px;
 }
 
+/* Split panels — mobile-first single column, two columns at lg */
 .split-panel,
 .editorial-grid,
 .contact-grid,
 .story-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: 1fr;
+  gap: 22px;
   align-items: start;
 }
 
-.split-panel.reverse { grid-template-columns: 0.92fr 1.08fr; }
+@media (min-width: 1024px) {
+  .split-panel,
+  .editorial-grid,
+  .contact-grid,
+  .story-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+  .split-panel.reverse { grid-template-columns: 0.92fr 1.08fr; }
+}
 
 .split-media img,
 .editorial-stack img,
 .mosaic img {
   width: 100%;
-  border-radius: 28px;
-  min-height: 280px;
+  border-radius: 22px;
+  min-height: 220px;
   object-fit: cover;
+}
+
+@media (min-width: 720px) {
+  .split-media img,
+  .editorial-stack img,
+  .mosaic img { border-radius: 28px; min-height: 280px; }
 }
 
 .editorial-stack,
@@ -650,15 +664,21 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 .service-list,
 .office-cards { display: grid; gap: 16px; }
 
+/* Timeline + service rows — stack on mobile, number-left at md */
 .timeline-item,
 .service-row {
   display: grid;
-  gap: 18px;
-  padding: 22px;
+  gap: 14px;
+  padding: 20px;
+  grid-template-columns: 1fr;
 }
 
-.timeline-item { grid-template-columns: 76px 1fr; }
-.service-row { grid-template-columns: 80px 1fr; gap: 20px; }
+@media (min-width: 720px) {
+  .timeline-item,
+  .service-row { gap: 18px; padding: 22px; }
+  .timeline-item { grid-template-columns: 76px 1fr; }
+  .service-row { grid-template-columns: 80px 1fr; gap: 20px; }
+}
 
 .timeline-item strong,
 .service-index {
@@ -812,18 +832,11 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 }
 
 @media (max-width: 1040px) {
-  .split-panel,
-  .story-grid,
-  .editorial-grid,
-  .contact-grid,
   .footer-grid { grid-template-columns: 1fr; }
-
   .cta-band { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 840px) {
-  .timeline-item,
-  .service-row { grid-template-columns: 1fr; }
   .whatsapp-float {
     right: 14px;
     bottom: 14px;
