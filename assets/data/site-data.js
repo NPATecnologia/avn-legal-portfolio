@@ -10,8 +10,8 @@ window.SITE_DATA = {
       href: "contato.html#formulario"
     },
     ctaSecondary: {
-      label: "Falar no WhatsApp",
-      href: "https://wa.me/5511994008899?text=Olá,%20quero%20entender%20como%20funciona%20o%20atendimento%20estratégico."
+      label: "Consultar no WhatsApp",
+      href: "https://wa.me/5511994008899?text=Olá,%20quero%20agendar%20uma%20consulta%20estratégica."
     },
     badge: "Boutique empresarial em São Paulo"
   },
@@ -193,9 +193,9 @@ window.SITE_DATA = {
   pages: {
     home: {
       hero: {
-        eyebrow: "Portfólio demonstrativo para escritórios premium",
-        title: "Advocacia empresarial com presença de marca e linguagem de decisão.",
-        lead: "Um portfólio concebido para parecer sob medida: sofisticado na forma, completo no conteúdo e convincente na conversão.",
+        eyebrow: "Boutique jurídico | São Paulo — SP",
+        title: "Proteção estratégica para o patrimônio, a reputação e o futuro da empresa.",
+        lead: "Assessoria jurídica para sócios, diretores e famílias empresárias — diagnóstico inicial em até 36 horas e acompanhamento contínuo nos mandatos que mais importam.",
         poster: "assets/images/generated/hero-frame.jpg",
         video: "assets/video/hero-loop.mp4",
         reel: [
@@ -223,21 +223,21 @@ window.SITE_DATA = {
       hero: {
         eyebrow: "Equipe principal",
         title: "Perfis complementares para operação, crise e sucessão.",
-        lead: "Uma equipe fictícia construída para parecer real, com repertório institucional, linguagem executiva e leitura de risco sofisticada."
+        lead: "Profissionais com repertório institucional, linguagem executiva e capacidade de leitura de risco sofisticada para cada tipo de mandato."
       }
     },
     results: {
       hero: {
         eyebrow: "Experiências de atuação",
         title: "Casos exemplificativos que mostram método, postura e impacto.",
-        lead: "Resultados apresentados como portfólio institucional: plausíveis, discretos e orientados à tomada de decisão de alto valor."
+        lead: "Cada mandato documenta o método aplicado, a postura estratégica e o impacto gerado para o cliente — com a discrição que o contexto exige."
       }
     },
     contact: {
       hero: {
-        eyebrow: "Contato e conversão",
-        title: "Um fluxo comercial desenhado para transformar visita em reunião.",
-        lead: "WhatsApp, formulário consultivo, mensagem executiva e experiência de contato já prontas para demonstrar valor comercial imediato."
+        eyebrow: "Fale com a equipe",
+        title: "Entre em contato e receba um diagnóstico inicial em até 36 horas.",
+        lead: "Escolha o canal que preferir — WhatsApp direto, formulário consultivo ou telefone. Atendimento reservado desde o primeiro contato."
       }
     }
   }

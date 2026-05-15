@@ -851,7 +851,12 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   .footer-logo { width: min(100%, 280px); margin-bottom: 18px; }
 }
 
-/* WhatsApp float — compact label on mobile, expanded on desktop */
+/* WhatsApp float — compact icon on mobile, expanded on desktop */
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 20px 40px rgba(15, 111, 79, 0.35); }
+  50% { box-shadow: 0 20px 50px rgba(15, 111, 79, 0.55), 0 0 0 8px rgba(27, 147, 104, 0.16); }
+}
+
 .whatsapp-float {
   position: fixed;
   right: 14px;
@@ -860,6 +865,7 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   min-width: 50px;
   min-height: 50px;
   padding: 0 16px;
+  gap: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -870,6 +876,7 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
   font-size: 0.88rem;
   font-weight: 600;
   touch-action: manipulation;
+  animation: waPulse 3s ease-in-out infinite;
 }
 
 @media (min-width: 1024px) {
@@ -877,7 +884,7 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
     right: 28px;
     bottom: 28px;
     min-height: 54px;
-    padding: 0 18px;
+    padding: 0 20px;
     font-size: 0.92rem;
   }
 }
@@ -885,13 +892,20 @@ h3 { font-size: clamp(1.18rem, 3vw, 1.72rem); line-height: 1.12; }
 [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 900ms ease, transform 900ms ease;
+  transition: opacity 800ms ease, transform 800ms ease;
 }
 
 [data-reveal].revealed {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Stagger reveals for siblings inside grid containers */
+:is(.feature-grid, .cards-grid, .practice-grid, .metrics-grid, .testimonial-grid, .result-grid, .team-grid, .dual-card-grid) > [data-reveal]:nth-child(2) { transition-delay: 90ms; }
+:is(.feature-grid, .cards-grid, .practice-grid, .metrics-grid, .testimonial-grid, .result-grid, .team-grid, .dual-card-grid) > [data-reveal]:nth-child(3) { transition-delay: 180ms; }
+:is(.feature-grid, .cards-grid, .practice-grid, .metrics-grid, .testimonial-grid, .result-grid, .team-grid, .dual-card-grid) > [data-reveal]:nth-child(4) { transition-delay: 270ms; }
+:is(.feature-grid, .cards-grid, .practice-grid, .metrics-grid, .testimonial-grid, .result-grid, .team-grid, .dual-card-grid) > [data-reveal]:nth-child(5) { transition-delay: 360ms; }
+:is(.feature-grid, .cards-grid, .practice-grid, .metrics-grid, .testimonial-grid, .result-grid, .team-grid, .dual-card-grid) > [data-reveal]:nth-child(6) { transition-delay: 450ms; }
 
 /* WhatsApp label — hidden on mobile (icon-only), visible on desktop */
 .whatsapp-float-label {
